@@ -28,7 +28,7 @@ public class ConsultaPessoas2 {
         }
 
         for(Pessoa p: pessoas){
-            System.out.println(p.getCodigo() + "==> " + p.getNome());
+            System.out.println(p.getCodigo() + "===> " + p.getNome());
         }
         stmt.close();
         conexao.close();
