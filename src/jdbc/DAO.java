@@ -10,7 +10,7 @@ public class DAO {
 
     public int incluir(String sql, Object... atributos){
         try {
-            PreparedStatement stmt = getCoxexao().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmt = getConexao().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             adicionarAtributos(stmt, atributos);
 
             if(stmt.executeUpdate() > 0){
@@ -28,7 +28,7 @@ public class DAO {
 
     public void close(){
         try {
-            getCoxexao().close();
+            getConexao().close();
         }catch (SQLException e){
         }
         finally {
@@ -47,7 +47,7 @@ public class DAO {
             indice++;
         }
     }
-    private Connection getCoxexao(){
+    private Connection getConexao(){
         try {
             if(conexao!= null && !conexao.isClosed()){
                 return conexao;
